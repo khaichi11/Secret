@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone Special</title>
+    <style>
+        @keyframes flower-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes love-pop {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #e9b7e9, #e1e1ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .login {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .login input {
+            margin: 10px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .login button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .login button:hover {
+            background-color: #ff7373;
+        }
+
+        .polaroid {
+            width: 600px;
+            height: 700px;
+            background-color: #333;
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 8px solid #fff;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .photo {
+            width: 440px;
+            height: 0;
+            background-color: white;
+            position: absolute;
+            bottom: 50px;
+            transition: height 1s ease;
+            border-radius: 5px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .polaroid.printing .photo {
+            height: 520px;
+        }
+
+        .love {
+            position: absolute;
+            font-size: 32px;
+            animation: love-pop 1s ease forwards;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login" id="loginBox">
+        <h2>Lili birtday (date and month)</h2>
+        <input type="password" id="password" placeholder="Masukin di sini angkanya">
+        <button onclick="checkPassword()">Periksa</button>
+    </div>
+
+    <div class="polaroid" id="polaroid" style="display: none;" onclick="printPhoto()">
+        <div class="header-text"><h2>Untuk Aulia Haq</h2></div>
+        <div class="photo" id="photo"><p>Hallo lili, jadi gimana puasanya bulan ini?, lancarkan?, oh iya karena sebentar lagi kita mau lebaran jadi aku mau minta maaf sebesar-besarnya dan ya seperti yang kamu tau aku banyak banget spam dan gangguin waktu kamu hahahahaha, aku rasa itu bikin kamu kesel sih apalagi pas lagi banyak banyaknya tugas, jadi inti dari surat ini aku mau ngucapin lebaran sama mau minta maaf nih ke lili.</p>
+            <p>Seputih benang yang lia rajut dengan penuh cinta, sebening air mata yang jatuh saat lia membuka galon, setulus rasa yang selalu aku ungkapkan setiap harinya, sehangat matahari yang menemani lia menghadapi hari. </p>
+            <p>Di hari raya yang fitri esok, mari saling memaafkan sedari sekarang, merangkai ikatan silaturahmi dengan benang keikhlasan, aku khai mengucapkan selamat hari raya idul fitri, mohon maaf lahir dan batin LIAAA.</p>
+            <p>Sebelumnya terimakasih karena udah nyempetin baca ini walau kamu sedang sibuk banget ngerjain tugas, Makasihhh yaaa LIAAA.</p>
+             </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === '411') {
+                document.getElementById('loginBox').style.display = 'none';
+                document.getElementById('polaroid').style.display = 'flex';
+            } else {
+                alert('Wrong password!');
+            }
+        }
+
+        function printPhoto() {
+            const polaroid = document.getElementById('polaroid');
+            polaroid.classList.toggle('printing');
+            for (let i = 0; i < 10; i++) {
+                const love = document.createElement('div');
+                love.classList.add('love');
+                love.textContent = '❤️';
+                love.style.left = Math.random() * 100 + '%';
+                love.style.top = Math.random() * 100 + '%';
+                polaroid.appendChild(love);
+                setTimeout(() => love.remove(), 1000);
+            }
+        }
+    </script>
+</body>
+</html>
